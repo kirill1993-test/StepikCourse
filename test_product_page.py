@@ -2,7 +2,7 @@ import pytest
 from .pages.product_page import ProductPage
 
 
-"""@pytest.mark.parametrize("num", ["0",
+@pytest.mark.parametrize("num", ["0",
                                  "1",
                                  "2",
                                  "3",
@@ -12,14 +12,14 @@ from .pages.product_page import ProductPage
                                  pytest.param("7",marks=pytest.mark.xfail(reason = "Mistake in book name")),
                                  "8",
                                  "9"])
-#def test_guest_can_add_product_to_basket(browser, num):
+def test_guest_can_add_product_to_basket(browser, num):
     link = f"http://selenium1py.pythonanywhere.com/catalogue/coders-at-work_207/?promo=offer{num}"
     page = ProductPage(browser, link)
     page.open()
     page.add_book_to_basket()
     page.solve_quiz_and_get_code()
     page.check_book_name()
-    page.check_book_price()"""
+    page.check_book_price()
 
 @pytest.mark.xfail
 def test_guest_cant_see_success_message_after_adding_product_to_basket(browser):

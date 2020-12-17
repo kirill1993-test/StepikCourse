@@ -1,5 +1,5 @@
 from.base_page import BasePage
-from .ProductPageLocators import ProductPageLocators
+from .locators import ProductPageLocators
 
 class ProductPage(BasePage):
 
@@ -21,4 +21,13 @@ class ProductPage(BasePage):
         banner_price = self.browser.find_element(*ProductPageLocators.PRICE_IN_BUNNER)
         banner_price = banner_price.text
         assert book_price == banner_price, "Price doesn't match"
+
+    def message_does_not_appear(self):
+        assert self.is_not_element_present(*ProductPageLocators.BOOK_IN_BUNNER),\
+        "Success message is presented, but should not be"
+
+    def message_disappear(self):
+        assert self.is_disappeared(*ProductPageLocators.BOOK_IN_BUNNER),\
+        "Success message isn't disappear"
+
 

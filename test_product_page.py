@@ -1,6 +1,6 @@
-import pytest
+import pytest, time
 from .pages.product_page import ProductPage
-
+from .pages.login_page import LoginPage
 
 @pytest.mark.parametrize("num", ["0",
                                  "1",
@@ -56,3 +56,35 @@ def test_guest_can_go_to_login_page_from_product_page(browser):
     page = ProductPage(browser, link)
     page.open()
     page.should_be_login_link()
+
+
+
+
+class TestUserAddToBasketFromProductPage():
+    @pytest.fixture(scope="function", autouse=True)
+    def test_setup(self,browser):
+        link = "http://selenium1py.pythonanywhere.com/accounts/login/"
+        page = LoginPage(browser, link)
+        page.open()
+        email = str(time.time()) + "@fakemail.org"
+        password = str("333444555666")
+        page.register_new_user(email,password)
+        page.should_be_authorized_user()
+
+
+    def test_user_see_success_message(self,browser):
+        link = "http://selenium1py.pythonanywhere.com/catalogue/coders-at-work_207"
+        page = ProductPage(browser, link)
+        page.open()
+        page.message_does_not_appear()
+
+
+    def test_user_can_add_product_to_basket(self,browser):
+        link = "http://selenium1py.pythonanywhere.com/catalogue/coders-at-work_207"
+        page = ProductPage(browser, link)
+        page.open()
+        page.add_book_to_basket()
+        page.check_book_name()
+        page.check_book_price()
+
+

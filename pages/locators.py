@@ -24,3 +24,6 @@ class ProductPageLocators():
     PRICE_IN_BUNNER = (By.CSS_SELECTOR,".alert.alert-safe.alert-noicon.alert-info.fade.in strong")
     BASKET_BUTTON = (By.CSS_SELECTOR, ".btn.btn-lg.btn-primary.btn-add-to-basket")
 
+class BasketLocators():
+    BASKET_BUTTON_MAIN_PAGE = (By.CSS_SELECTOR,"#default > header > div.page_inner > div > div.basket-mini.pull-right.hidden-xs > span > a")
+    BASKET_MESSAGE = (By.CSS_SELECTOR,"#content_inner > p")

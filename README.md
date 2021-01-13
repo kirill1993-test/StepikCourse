@@ -1,2 +1,1 @@
-# StepikCourse
-Final project in course https://stepik.org/course/575/syllabus
+# StepikCourse https://stepik.org/course/575/syllabus
